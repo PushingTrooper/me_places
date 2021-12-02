@@ -3,6 +3,7 @@ import 'package:my_places/providers/great_places.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/add_place_screen.dart';
+import '../screens/place_details_screen.dart';
 
 class PlaceListScreen extends StatelessWidget {
   @override
@@ -43,8 +44,11 @@ class PlaceListScreen extends StatelessWidget {
                                 backgroundImage: FileImage(currentPlace.image),
                               ),
                               title: Text(currentPlace.title),
+                              subtitle: Text(currentPlace.location.address),
                               onTap: () {
-                                //Go to details
+                                Navigator.of(context).pushNamed(
+                                    PlaceDetaiScreen.routeName,
+                                    arguments: currentPlace.id);
                               },
                             );
                           },
